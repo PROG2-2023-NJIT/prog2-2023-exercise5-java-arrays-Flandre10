@@ -50,10 +50,10 @@ public class FlightBookingTest
         }
 
         fb.setTripSource("1");
-        fb.setSourceAirport("1");
+        fb.setSourceAirport();
 
         fb.setTripDestination("1", "3");
-        fb.setDestinationAirport("1", "3");
+        fb.setDestinationAirport();
 
         fb.setTripType("2");
 

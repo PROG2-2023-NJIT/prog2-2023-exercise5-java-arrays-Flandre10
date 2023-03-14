@@ -4,10 +4,15 @@ package prog2.exercise5.flight.booking.system;
  * Hello world!
  *
  */
-public class App 
+public class Main
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+
+
+        FlightBooking fly1 = new FlightBooking(3);
+        System.out.println(fly1);
+       fly1.reserveTickets();
+
     }
 }
