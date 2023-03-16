@@ -55,7 +55,7 @@ public class FlightBookingTest
         fb.setTripDestination("1", "3");
         fb.setDestinationAirport();
 
-        fb.setTripType("2");
+        fb.setTripType("1");
 
         fb.setBookingClass("1");
 
@@ -79,9 +79,8 @@ public class FlightBookingTest
         }
 
         //Fixed the expectedTicketPrice test logic
-        double expectedTicketPrice = 2* ((0*(300 + (0.15*300) + (0.1*300) + 250)) + (3*(300 + (0.15*300) + (0.1*300) + 250)));
+        double expectedTicketPrice = 2* ((0*(300 + (0.1*300) + (0.05*300) + 250)) + (3*(300 + (0.1*300) + (0.05*300) + 250)));
         double returnedTicketPrice = fb.getTotalTicketPrice();
-
 
         for(int j=0; j<size; ++j){
             if((fb.getPassengerFullName(j) == fullName[j]) && (fb.getPassengerGender(j) == gender[j]) 

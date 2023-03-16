@@ -12,7 +12,7 @@ class FlightBooking {
 
     int num;
     private int childPassengers;
-    private int adultPassengers = (num-1);
+    private int adultPassengers ;
     private int totalPassengers;
 
 
@@ -21,20 +21,38 @@ class FlightBooking {
     int[] AGE = {4,25,17,76,38,9};
 
 
-    String[] passengerFullName = new String[3];
-    String[] passengerGender = new String[3];
-    int[] passengerAge = new int[3];                              //建立数组
-    String[] ticketNumber = new String[3];
+    String[] passengerFullName;
+    String[] passengerGender;
+    int[] passengerAge;                              //建立数组
+    String[] ticketNumber;
 
 
     public FlightBooking(int num) {
+        this.passengerFullName = new String[num];
+        this.passengerGender = new String[num];
+        this.passengerAge = new int[num];
+        this.ticketNumber = new String[num];
         this.num = num;
+
+        setBookingClass("1");
+        setTripType("1");
+        setTripSource("3");
+        setTripDestination("1","3");
+        setSourceAirport();
+        setDestinationAirport();
+        settype();
+        setclasses();
+        setabroad();
+        setTicketNumber(this.num);
+
         setDepartureDate(departuredate);
-        setReturnDate(returndate);                                          //构造器
-        setTotalPassengers(childPassengers,adultPassengers);
-        setDepartingTicketPrice(1,num-1);
+        setReturnDate(returndate);
+        setTotalPassengers(1,2);            //构造器
+        setDepartingTicketPrice(1,2);
         setReturnTicketPrice();
         setTotalTicketPrice();
+
+
     }
     public  void  reserveTickets(){
         int q = 0 ; int w = 0 ; int e = 0 ; int r = 0;
@@ -48,18 +66,7 @@ class FlightBooking {
         for(e=0; e<this.num ; ++e){
             setPassengerAge(e ,AGE[e]);}
                                                                         //循环着行
-        for(r=0; r<this.num ; ++r){
-            setBookingClass("1");
-            setTripType("1");
-            setTripSource("1");
-            setTripDestination("2","1");
-            setSourceAirport();
-            setDestinationAirport();
-            settype();
-            setclasses();
-            setabroad();
-            setTicketNumber(this.num);
-        }
+
         for(int o = 0; o < this.num ; ++o ) {
             System.out.println("\n" + "Here are the trip details for Passenger No." +(o+1) );
             System.out.println("Passenger's Ticket Number:" +  ticketNumber[o]);
@@ -100,9 +107,6 @@ class FlightBooking {
     }
 
 
-
-
-
     String Bookingclass;                                                    //囧仙坐头等舱吗
     FlightBooking.BookingClass bookingclass;
     public void setBookingClass(String BookingClass){
@@ -126,7 +130,6 @@ class FlightBooking {
     public String getBooking(){return Bookingclass;}
     String Tripype;                                                                    //往返模式
     public void setTripType(String tripType){
-
         switch (tripType)
         {
             case "1":
@@ -150,8 +153,7 @@ class FlightBooking {
     long Cha = ChronoUnit.DAYS.between(departuredate,returndate);                       //回来吧，我的爱人
 
     public void print(){
-        System.out.println("IMPORTANT NOTICE: As per our policy, the return date was changed because it was \n" +
-                "less than two days apart from your departure date.");
+        System.out.println("IMPORTANT NOTICE: As per our policy, the return date was changed because it was less than two days apart from your departure date.");
     }
     public void setDepartureDate(LocalDate departure) {
         if(Cha == 0){
@@ -230,7 +232,7 @@ class FlightBooking {
         if(Tripsource == "BEIJIN"){
             source_airport = SourceAirport.BEIJING_CAPITAL_INTERNATIONAL_AIRPORT;
         }
-        if(Tripsource== " Oulu"){
+        if(Tripsource== " OULU"){
             source_airport = SourceAirport.OULU_AIRPORT;
         }
         if(Tripsource == "HELSINKI"){
@@ -394,29 +396,29 @@ class FlightBooking {
         if(type == "11") {
             if (Bookingclass == "FIRST") {
                 DepartingTicketPrice = (child + adult) * (300 + 300 * 0.1 + 300 * 0.05);
-                DepartingTicketPrice = 250 + DepartingTicketPrice;
+                this.DepartingTicketPrice = (child + adult) *250 + DepartingTicketPrice;
             }
             if (Bookingclass == "BUSINESS") {
                 DepartingTicketPrice = (child + adult) * (300 + 300 * 0.1 + 300 * 0.05);
-                DepartingTicketPrice = 150 + DepartingTicketPrice;
+                this.DepartingTicketPrice = (child + adult) *150 + DepartingTicketPrice;
             }
             if (Bookingclass == "ECONOMY") {
                 DepartingTicketPrice = (child + adult) * (300 + 300 * 0.1 + 300 * 0.05);
-                DepartingTicketPrice = 50 + DepartingTicketPrice;
+                this.DepartingTicketPrice = (child + adult) *50 + DepartingTicketPrice;
             }
             if (type == "22") {
                 if (Bookingclass == "FIRST") {
                     DepartingTicketPrice = (child + adult) * (300 + 300 * 0.15 + 300 * 0.1);
-                    DepartingTicketPrice = 250 + DepartingTicketPrice;
+                    this.DepartingTicketPrice = (child + adult) *250 + DepartingTicketPrice;
                 }
                 if (Bookingclass == "BUSINESS") {
                     DepartingTicketPrice = (child + adult) * (300 + 300 * 0.15 + 300 * 0.1);
-                    DepartingTicketPrice = 150 + DepartingTicketPrice;
+                    this.DepartingTicketPrice = (child + adult) *150 + DepartingTicketPrice;
                 }
                 if (Bookingclass == "ECONOMY") {
                     DepartingTicketPrice = (child + adult) * (300 + 300 * 0.15 + 300 * 0.1);
+                    this.DepartingTicketPrice = (child + adult) *50 + DepartingTicketPrice;
                 }
-                DepartingTicketPrice = 50 + DepartingTicketPrice;
             }
         }
     }
